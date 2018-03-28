@@ -1,0 +1,8 @@
+br\com\manzatech\estoque\dao\ProdutoDaoMemoria.class
+br\com\manzatech\estoque\GerenciadorDeProduto.class
+br\com\manzatech\estoque\dao\ProdutoDao.class
+br\com\manzatech\estoque\TesteInjecao2.class
+br\com\manzatech\estoque\controllers\ProdutosController.class
+br\com\manzatech\estoque\Produto.class
+br\com\manzatech\estoque\TesteInjecao.class
+br\com\manzatech\estoque\SpringBean.class
