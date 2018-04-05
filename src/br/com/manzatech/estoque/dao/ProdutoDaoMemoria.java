@@ -18,13 +18,13 @@ public class ProdutoDaoMemoria implements ProdutoDao {
 		p.setQuantidade(10);
 		p.setDescricao("Produto 1");
 		salvar(p);
-		
+
 		p = new Produto();
 		p.setId(2l);
 		p.setQuantidade(20);
 		p.setDescricao("Produto 2");
 		salvar(p);
-		
+
 		p = new Produto();
 		p.setId(3l);
 		p.setQuantidade(30);
@@ -51,4 +51,13 @@ public class ProdutoDaoMemoria implements ProdutoDao {
 		return produtos.get(id.intValue() - 1);
 	}
 
+	@Override
+	public Integer estoqueAtual(Produto produto) {
+		for (Produto p : produtos) {
+			if (p.getId().equals(produto.getId())) {
+				return p.getQuantidade();
+			}
+		}
+		throw new IllegalArgumentException("Produto nao encontrado");
+	}
 }

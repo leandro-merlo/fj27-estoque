@@ -1,11 +1,17 @@
 package br.com.manzatech.estoque;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Produto implements Serializable {
@@ -17,8 +23,14 @@ public class Produto implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	@NotBlank
+	@Size(min=1, max=15, message="{fuleiro.com}")
 	private String descricao;
+	@NotNull
 	private Integer quantidade;
+	
+	@OneToMany(mappedBy="produto")
+	private List<Movimentacao> movimentacoes;
 
 	public Long getId() {
 		return id;
@@ -42,6 +54,14 @@ public class Produto implements Serializable {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+	
+	public List<Movimentacao> getMovimentacoes() {
+		return movimentacoes;
+	}
+
+	public void setMovimentacoes(List<Movimentacao> movimentacoes) {
+		this.movimentacoes = movimentacoes;
 	}
 
 	@Override
