@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.manzatech.estoque.Usuario;
 
+@Transactional
 @Repository
 public class UsuarioDaoHibernate implements UsuarioDao {
 
@@ -33,9 +35,7 @@ public class UsuarioDaoHibernate implements UsuarioDao {
 		select.where(cb.equal(from.get("login"), username));
 		Query query = factory.getCurrentSession().createQuery(select);
 		Usuario result = (Usuario) query.getSingleResult();
-		System.out.println(result);
 		if (null != result) {
-			System.out.println("Exibindo o id do usuário" + result.getId());
 			return result;
 		}
 		return null;

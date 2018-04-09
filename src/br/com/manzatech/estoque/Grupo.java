@@ -17,7 +17,7 @@ public class Grupo implements GrantedAuthority {
 	private static final long serialVersionUID = -5313254785573028566L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="grupo_generator")
+	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="grupo_generator")
 	@SequenceGenerator(initialValue=1, name="grupo_generator")
 	private Long id;
 	private String nome;

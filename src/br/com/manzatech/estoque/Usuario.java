@@ -28,7 +28,7 @@ public class Usuario implements UserDetails {
 	private static final long serialVersionUID = 451572825043687631L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "usuario_generator")
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "usuario_generator")
 	@SequenceGenerator(initialValue=1, name="usuario_generator")
 	private Long id;
 	private String login;
@@ -54,7 +54,7 @@ public class Usuario implements UserDetails {
 	}
 
 	public void setLogin(String login) {
-		this.login = encoder.encode(login);
+		this.login = login;
 	}
 
 	public String getSenha() {
@@ -62,7 +62,7 @@ public class Usuario implements UserDetails {
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.senha = encoder.encode(senha);
 	}
 
 	public List<Grupo> getGrupos() {
